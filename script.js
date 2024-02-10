@@ -7,7 +7,7 @@ const cityHide = document.querySelector('.city-hide');
 const cityInput = document.querySelector('.search-box input');
 const KLUTCH = '2abb4416717d1e1b37ce607e0476dab1';
 
-searchBtn.addEventListener("click", () => {
+const getWeather = () => {
     const cityName = cityInput.value.trim();
 
     if (!cityName) {
@@ -113,5 +113,9 @@ searchBtn.addEventListener("click", () => {
             }
         }
     });
-});
+}
+
+
+searchBtn.addEventListener("click", getWeather);
+cityInput.addEventListener("keyup", e => e.key === "Enter" && getWeather());
 
