@@ -28,6 +28,7 @@ const getWeather = () => {
         const image = document.querySelector('.weather-box img');
         const temperature = document.querySelector('.weather-box .temperature');
         const temperatureFeels = document.querySelector('.weather-box .temperatureFeels');
+        const temperatureMinMax = document.querySelector('.weather-box .temperatureMinMax');
         const description = document.querySelector('.weather-box .description');
         const humidity = document.querySelector('.weather-details .humidity span');
         const wind = document.querySelector('.weather-details .wind span');
@@ -38,7 +39,7 @@ const getWeather = () => {
         else {
             cityHide.textContent = cityName;
 
-            container.style.height = '555px';
+            container.style.height = '655px';
             container.classList.add('active');
             weatherBox.classList.add('active');
             weatherDetails.classList.add('active');
@@ -64,7 +65,8 @@ const getWeather = () => {
             }
 
             temperature.innerHTML = `${Math. round(parseFloat(json.main.temp))}<span>°C</span>`;
-            temperatureFeels.innerHTML = `Feels like ${Math. round(parseFloat(json.main.feels_like))}<span>°C</span>`;
+            temperatureFeels.innerHTML = `Feels like ${Math.round(parseFloat(json.main.feels_like))}<span>°C</span>`;
+            temperatureMinMax.innerHTML = `Min ${Math.round(parseFloat(json.main.temp_min))}<span>°C</span> / Max ${Math.round(parseFloat(json.main.temp_max))}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`;
             wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
