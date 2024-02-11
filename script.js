@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const searchBtn = document.querySelector(".search-box button");
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
+const weatherForecast = document.querySelector('.weather-forecast');
 const notFound = document.querySelector('.not-found');
 const cityHide = document.querySelector('.city-hide');
 const cityInput = document.querySelector('.search-box input');
@@ -13,7 +14,7 @@ const getWeather = () => {
     if (!cityName) {
         return;
     }
-    const WEATHER_CALL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${KLUTCH}&units=metric`;
+    const WEATHER_CALL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${KLUTCH}&units=metric`;
 
     fetch(WEATHER_CALL).then(response => response.json()).then(json => {
         if (json.cod == '404') {
@@ -21,6 +22,7 @@ const getWeather = () => {
             container.style.height = '400px';
             weatherBox.classList.remove('active');
             weatherDetails.classList.remove('active');
+            weatherForecast.classList.remove('active');
             notFound.classList.add('active');
             return;
         }
@@ -32,6 +34,8 @@ const getWeather = () => {
         const description = document.querySelector('.weather-box .description');
         const humidity = document.querySelector('.weather-details .humidity span');
         const wind = document.querySelector('.weather-details .wind span');
+        const imageTomorrow = document.querySelector('.weather-forecast img');
+        const weatherTomorrow = document.querySelector('.weather-forecast .weather-tomorrow');
 
         if (cityHide.textContent == cityName) {
             return;
@@ -43,6 +47,7 @@ const getWeather = () => {
             container.classList.add('active');
             weatherBox.classList.add('active');
             weatherDetails.classList.add('active');
+            weatherForecast.classList.add('active');
             notFound.classList.remove('active');
 
             setTimeout(() => {
@@ -50,7 +55,7 @@ const getWeather = () => {
             }, 2500);
 
             console.log(json);
-            switch (json.weather[0].icon) {
+            switch (json.list[0].weather[0].icon) {
                 case '01d':
                     image.src = 'assets/clear.png';
                     image.classList.add('active');
@@ -61,16 +66,18 @@ const getWeather = () => {
                     break;
                 default:
                     image.classList.remove('active');
-                    image.src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@4x.png`;
+                    image.src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@4x.png`;
             }
 
-            temperature.innerHTML = `${Math. round(parseFloat(json.main.temp))}<span>°C</span>`;
-            temperatureFeels.innerHTML = `Feels like ${Math.round(parseFloat(json.main.feels_like))}<span>°C</span>`;
-            temperatureMinMax.innerHTML = `Min ${Math.round(parseFloat(json.main.temp_min))}<span>°C</span> / Max ${Math.round(parseFloat(json.main.temp_max))}<span>°C</span>`;
-            description.innerHTML = `${json.weather[0].description}`;
-            humidity.innerHTML = `${json.main.humidity}%`;
-            wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
-
+            temperature.innerHTML = `${Math. round(parseFloat(json.list[0].main.temp))}<span>°C</span>`;
+            temperatureFeels.innerHTML = `Feels like ${Math.round(parseFloat(json.list[0].main.feels_like))}<span>°C</span>`;
+            temperatureMinMax.innerHTML = `Min ${Math.round(parseFloat(json.list[0].main.temp_min))}<span>°C</span> / Max ${Math.round(parseFloat(json.list[0].main.temp_max))}<span>°C</span>`;
+            description.innerHTML = `${json.list[0].weather[0].description}`;
+            humidity.innerHTML = `${json.list[0].main.humidity}%`;
+            wind.innerHTML = `${Math.round(parseFloat(json.list[0].wind.speed))}km/h`;
+            imageTomorrow.src = `https://openweathermap.org/img/wn/${json.list[8].weather[0].icon}@2x.png`;
+            weatherTomorrow.innerHTML = `Tomorrow: Min ${Math.round(parseFloat(json.list[8].main.temp_min))}°C / Max ${Math.round(parseFloat(json.list[8].main.temp_max))}°C`;
+            
             const infoWeather = document.querySelector('.info-weather');
             const infoHumidity = document.querySelector('.info-humidity');
             const infoWind = document.querySelector('.info-wind');
