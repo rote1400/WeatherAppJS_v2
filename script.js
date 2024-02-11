@@ -76,7 +76,7 @@ const getWeather = () => {
             humidity.innerHTML = `${json.list[0].main.humidity}%`;
             wind.innerHTML = `${Math.round(parseFloat(json.list[0].wind.speed))}km/h`;
             imageTomorrow.src = `https://openweathermap.org/img/wn/${json.list[8].weather[0].icon}@2x.png`;
-            weatherTomorrow.innerHTML = `Tomorrow: Min ${Math.round(parseFloat(json.list[8].main.temp_min))}°C / Max ${Math.round(parseFloat(json.list[8].main.temp_max))}°C`;
+            weatherTomorrow.innerHTML = `Tomorrow: Temp. ${Math.round(parseFloat(json.list[8].main.temp))}°C / Feels ${Math.round(parseFloat(json.list[8].main.feels_like))}°C`;
             
             const infoWeather = document.querySelector('.info-weather');
             const infoHumidity = document.querySelector('.info-humidity');
