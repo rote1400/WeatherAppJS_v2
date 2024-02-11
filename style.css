@@ -122,15 +122,21 @@ body {
 }
 
 .weather-box img {
-    margin-top: -60px;
-    margin-bottom: -120px;
-    width: 100%;
+    margin-top: -70px;
+    margin-bottom: -90px;
+    width: 70%;
 }
 
 .weather-box img.active {
     margin-top: 0px;
     margin-bottom: -20px;
-    width: 70%;
+    width: 60%;
+}
+
+.weather-box img.snow {
+    margin-top: 0px;
+    margin-bottom: -25px;
+    width: 35%;
 }
 
 .weather-box .temperature {
@@ -269,7 +275,7 @@ body {
 }
 
 #clone-info-weather .weather {
-    transform: translateY(160%);
+    transform: translateY(190%);
     transition: transform 1s ease, opacity 0s;
     transition-delay: 0s, 2s;
 }

@@ -43,7 +43,7 @@ const getWeather = () => {
         else {
             cityHide.textContent = cityName;
 
-            container.style.height = '655px';
+            container.style.height = '595px';
             container.classList.add('active');
             weatherBox.classList.add('active');
             weatherDetails.classList.add('active');
@@ -64,8 +64,14 @@ const getWeather = () => {
                     image.src = 'assets/cloud.png';
                     image.classList.add('active');
                     break;
+                case '13d':
+                    image.src = 'assets/snow.png';
+                    image.classList.add('active');
+                    image.classList.add('snow');
+                    break;
                 default:
                     image.classList.remove('active');
+                    image.classList.remove('snow');
                     image.src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@4x.png`;
             }
 
