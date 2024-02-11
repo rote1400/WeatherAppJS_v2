@@ -31,6 +31,10 @@ body {
     transition: height .6s ease;
 }
 
+.container.active {
+    height: 1000px;
+}
+
 .search-box {
     align-items: center;
     display: flex;
@@ -87,6 +91,7 @@ body {
 
 .weather-box,
 .weather-details,
+.weather-forecast,
 .not-found {
     visibility: hidden;
     overflow: hidden;
@@ -94,16 +99,19 @@ body {
 
 .weather-box.active,
 .weather-details.active,
+.weather-forecast.active,
 .not-found.active {
     visibility: visible;
 }
 
 .weather-box .box,
+.weather-forecast .box,
 .not-found .box {
     transform: translateY(-100%);
 }
 
 .weather-box.active .box,
+.weather-forecast.active .box,
 .not-found.active .box {
     transform: translateY(0%);
     transition: transform 1s ease;
@@ -115,6 +123,7 @@ body {
 }
 
 .container.active .weather-box .box .info-weather,
+.container.active .weather-forecast .box,
 .container.active .weather-details .humidity .info-humidity,
 .container.active .weather-details .wind .info-wind {
     transform: translateY(0%);
@@ -122,15 +131,15 @@ body {
 }
 
 .weather-box img {
-    margin-top: -70px;
+    margin-top: -60px;
     margin-bottom: -90px;
     width: 70%;
 }
 
 .weather-box img.active {
-    margin-top: 0px;
-    margin-bottom: -20px;
-    width: 60%;
+    margin-top: -5px;
+    margin-bottom: -30px;
+    width: 50%;
 }
 
 .weather-box img.snow {
@@ -263,7 +272,8 @@ body {
     display: none;
 }
 
-#clone-info-weather {
+#clone-info-weather,
+#clone-weather-forecast {
     position: relative;
     transform: translateY(-100%);
 }
@@ -274,8 +284,9 @@ body {
     transform: translateY(-100%);
 }
 
-#clone-info-weather .weather {
-    transform: translateY(190%);
+#clone-info-weather .weather,
+#clone-weather-forecast {
+    transform: translateY(200%);
     transition: transform 1s ease, opacity 0s;
     transition-delay: 0s, 2s;
 }
@@ -285,7 +296,8 @@ body {
     transition-delay: 0s;
 }
 
-.active-clone#clone-info-weather .weather {
+.active-clone#clone-info-weather .weather,
+.active-clone#clone-weather-forecast {
     transform: translateY(0%);
 }
 
@@ -298,4 +310,10 @@ body {
 .active-clone#clone-info-humidity span,
 .active-clone#clone-info-wind span {
     transform: translateY(0%);
+}
+
+@media (max-width: 750px) {
+    .container.active {
+        height: 750px;
+    }
 }

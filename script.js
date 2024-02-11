@@ -91,6 +91,7 @@ const getWeather = () => {
             const oneCloneInfoWeather = infoWeather.cloneNode(true);
             const oneCloneInfoHumidity = infoHumidity.cloneNode(true);
             const oneCloneInfoWind = infoWind.cloneNode(true);
+            const oneCloneWeatherForecast = weatherForecast.cloneNode(true);
 
             oneCloneInfoWeather.id = 'clone-info-weather';
             oneCloneInfoWeather.classList.add('active-clone');
@@ -98,11 +99,14 @@ const getWeather = () => {
             oneCloneInfoHumidity.classList.add('active-clone');
             oneCloneInfoWind.id = 'clone-info-wind';
             oneCloneInfoWind.classList.add('active-clone');
+            oneCloneWeatherForecast.id = 'clone-weather-forecast';
+            oneCloneWeatherForecast.classList.add('active-clone');
 
             setTimeout(() => {
                 infoWeather.insertAdjacentElement("afterend", oneCloneInfoWeather);
                 infoHumidity.insertAdjacentElement("afterend", oneCloneInfoHumidity);
                 infoWind.insertAdjacentElement("afterend", oneCloneInfoWind);
+                weatherForecast.insertAdjacentElement("afterend", oneCloneWeatherForecast);
             }, 2200);
 
             const cloneInfoWeather = document.querySelectorAll('.info-weather.active-clone');
@@ -115,15 +119,20 @@ const getWeather = () => {
             const cloneInfoWind = document.querySelectorAll('.info-wind.active-clone');
             const cloneInfoWindFirst = cloneInfoWind[0];
 
+            const cloneWeatherForecast = document.querySelectorAll('.weather-forecast.active-clone');
+            const cloneWeatherForecastFirst = cloneWeatherForecast[0];
+
             if (totalCloneInfoWeather > 0) {
                 cloneInfoWeatherFirst.classList.remove('active-clone');
                 cloneInfoHumidityFirst.classList.remove('active-clone');
                 cloneInfoWindFirst.classList.remove('active-clone');
+                cloneWeatherForecastFirst.classList.remove('active-clone');
 
                 setTimeout(() => {
                     cloneInfoWeatherFirst.remove();
                     cloneInfoHumidityFirst.remove();
                     cloneInfoWindFirst.remove();
+                    cloneWeatherForecastFirst.remove();
                 }, 2200);
             }
         }
