@@ -1,6 +1,6 @@
 # Weather App
 
-Welcome to the Weather App! This application provides real-time weather information for any city around the world. Built using JavaScript, CSS, and HTML, this app demonstrates the power of web technologies in creating interactive and user-friendly interfaces.
+Welcome to the Weather App! This application provides real-time weather information for any city around the world. Built using JavaScript, CSS, and HTML. It has interactive, responsive and user-friendly interface.
 
 ## Features
 
