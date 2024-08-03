@@ -18,7 +18,7 @@ Welcome to the Weather App! This application provides real-time weather informat
 
 ## How to Use
 
-1. **Clone the Repository**: Clone this repository to your local machine using `git clone https://github.com/yourusername/weather-app.git`.
+1. **Clone the Repository**: Clone this repository to your local machine using `git clone https://github.com/rote1400/WeatherAppJS_v2.git`.
 2. **Open the App**: Open the `index.html` file in your favorite web browser.
 3. **Search for a City**: Enter the name of a city in the search bar and click the search button.
 4. **View Weather Information**: The app will display the current weather conditions for the specified city.
