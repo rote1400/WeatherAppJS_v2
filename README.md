@@ -34,7 +34,7 @@ You can check out the project and play the game on [GitHub](https://github.com/r
 
 ## Acknowledgements
 OpenWeather API for providing the weather data.
-Icons: https://boxicons.com/
+Weather Icons: https://boxicons.com/
 Image Sources: https://www.freepik.com/
 
 Enjoy using the Weather App and stay updated with the latest weather conditions!
